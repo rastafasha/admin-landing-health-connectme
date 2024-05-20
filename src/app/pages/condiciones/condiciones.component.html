@@ -1,0 +1,68 @@
+<!-- =======| Main |======= -->
+
+
+<div class="container animated fadeInUp" id="main" class="main" role="main" name="profile" *ngIf="userprofile" style="height: calc(74vh);">
+
+    <div class="col-xs-12">
+        <div class="leftside">
+            <!-- Page Title -->
+            <div class="pagetitle">
+                <h1><i class="bx bxs-user-account"></i> {{title}} </h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a routerLink="/"><i class="fa fa-home"></i> Inicio</a></li>
+                        <li class="breadcrumb-item active">{{title}}</li>
+                    </ol>
+                </nav>
+            </div>
+            <!-- End Page Title -->
+        </div>
+        <div class="buton">
+            <button class="btn btn-outline-danger pull-right" href="javascript:void(0)" (click)="goBack()">Volver</button>
+        </div>
+        <div class="clear"></div>
+
+        <section class="section profile">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+
+                    <form class="form-horizontal form-material" (ngSubmit)="aceptarCodiciones()" [formGroup]="aceptaForm">
+                        <div class="col-lg-9">
+                            <div class="form-group">
+                                <label for="select-input">Acepta las condiciones ?<span class="required">*</span>
+                                  <a  href="javascript:void(0)"  data-bs-toggle="modal" data-bs-target="#condiciones"> ver condiciones </a>
+                            </label>
+                                <select class="form-control" formControlName="aceptaCondiciones">
+                          <option value="">Seleccione</option>
+                          <option value="1">Si</option>
+                          <option value="0">No</option>
+                        </select>
+                            </div>
+                            <input type="hidden" formControlName="id">
+                            <button class="btn btn-outline-success waves-effect waves-light m-r-10" type="submit">Aceptar</button>
+
+                        </div>
+                    </form>
+                    <br>
+                    <div *ngIf="userprofile.condicions.aceptaCondiciones === 0">
+                        <p style="color: red">Debe Aceptar las Condiciones para continuar</p>
+
+                    </div>
+
+
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div *ngIf="userprofile.condicions.aceptaCondiciones === 1">
+                        <a [routerLink]="['/dashboard/profile/', user.id]">
+                            <button class="btn btn-outline-success">Continuar</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+
+<!--/main-->
+<app-modal-condiciones></app-modal-condiciones>

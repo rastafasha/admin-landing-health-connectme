@@ -1,0 +1,127 @@
+<!-- =======| Main |======= -->
+<div class="container animated fadeInUp" id="main" class="main" role="main" name="users">
+
+    <div class="col-xs-12">
+        <div class="leftside">
+            <!-- Page Title -->
+            <div class="pagetitle">
+                <!-- <h1><i class="bx bxs-user-account"></i> {{title}}</h1> -->
+
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a routerLink="/"><i class="bi bi-house"></i> Inicio</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/">Panel Admin</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/dashboard/workshops">Doctores</a></li>
+                        <li class="breadcrumb-item active">{{title}}</li>
+                    </ol>
+                </nav>
+            </div>
+            <!-- End Page Title -->
+        </div>
+        <div class="buton rightside">
+            
+        </div>
+        <div class="clear"></div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-outline-danger pull-right" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                    <button class="btn btn-outline-success pull-right" (click)="csvExport()"> <i class="fa fa-download"></i> Descargar CSV</button>
+                    <button class="btn btn-outline-success pull-right" (click)="excelExport()"><i class="fa fa-download"></i> Descargar Excel</button>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div><br>
+        <section class="section dashboard">
+
+
+            <!-- Recent Pagos -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- buscador -->
+                        <form class="form-horizontal">
+                            <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                                <div class="input-group">
+                                    <input type="search" name="search" type="text" class="form-control col-xs-12" placeholder="Buscar.." [(ngModel)]="query" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                                    <div class="input-group-append">
+                                        <button id="button-addon1" type="submit" class="btn btn-link text-primary" (click)="search()" name="submit" data-toggle="tooltip" title="mostrar todos"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- buscador -->
+                    </div>
+                </div>
+                <div class="card recent-sales overflow-auto">
+
+
+                    <div class="card-body">
+
+
+                        <table class="table table-borderless datatable':'table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>email</th>
+                                    <th>Especialidad</th>
+                                    <th>Ciudad</th>
+                                    <th>Telefono</th>
+                                    <th>creado</th>
+                                    <th>status</th>
+                                    <th>accion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let workshop of doctores |  paginate: { itemsPerPage: count, currentPage: p }">
+
+                                    <td>{{workshop.id}}</td>
+                                    <td><a [routerLink]="['/dashboard/workshop/detail', workshop.id]">{{workshop.nombre}}</a></td>
+                                    <td>{{workshop.apellido}}</td>
+                                    <td>{{workshop.email | slice:0:5}}... </td>
+                                    <td>{{workshop.speciality}}</td>
+                                    <td>{{workshop.ciudad}}</td>
+                                    <td>{{workshop.phone}}</td>
+                                    <td>{{workshop.created_at | date:'MMM d, y, h:mm:ss a'}}</td>
+                                    
+                                    <td>
+                                        <select class="form-control" [(ngModel)]="workshop.status">
+                                            <option value="APPROVED">Aprobado</option>
+                                            <option value="PENDING">Pendiente</option>
+                                            <option value="REJECTED">Rechazado</option>
+                                        </select>
+                                    </td>
+
+                                    <td class="text-nowrap text-center">
+
+                                        <a (click)="cambiarStatus(workshop)" class="cursor" data-toggle="tooltip" data-original-title="Edit">
+                                            <button class="btn btn-outline-success">
+                                          <i class="bx bxs-check-circle text-success" style="font-size: 18px;"></i> Aceptar
+                                        </button>
+                                        </a>
+
+                                    </td>
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Recent Pagos -->
+
+        </section>
+
+    </div>
+</div>
+<!--/main-->
