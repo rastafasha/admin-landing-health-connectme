@@ -9,6 +9,10 @@ import { WorkshopService } from 'src/app/services/workshop.service';
 
 import { FileSaverService } from 'ngx-filesaver';
 import * as XLSX from 'xlsx';
+import { RegistroLandingService } from 'src/app/services/registro-landing.service';
+import { TypeService } from 'src/app/services/type-service.service';
+import { Type } from 'src/app/models/type';
+import { RegistroLanding } from 'src/app/models/registro-langing';
 
 @Component({
   selector: 'app-workshop1',
@@ -20,8 +24,11 @@ export class Workshop1Component implements OnInit {
   title = "Registro de Solicitudes ";
   // workshops: Workshop[] = [];
   doctores: any;
-  workshop: Workshop;
+  registrol: RegistroLanding;
+  rlandings: RegistroLanding;
+  types: Type;
   datos: any;
+  type_id: number;
 
   p: number = 1;
   count: number = 8;
@@ -39,18 +46,30 @@ export class Workshop1Component implements OnInit {
     private fb:FormBuilder,
     private workshopsService: WorkshopService,
     private location: Location,
-    private fileSaver: FileSaverService
+    private fileSaver: FileSaverService,
+    private rlandingService: RegistroLandingService,
+    private typeServiceService: TypeService,
   ) { }
 
   ngOnInit(): void {
     this.getWorkshops();
+    this.getTypesList();
     window.scrollTo(0,0);
   }
 
   getWorkshops(): void {
-    this.workshopsService.getWorkshops().subscribe(
+    this.rlandingService.getRegistroLandings().subscribe(
       (res:any) =>{
-        this.doctores = res;
+        this.rlandings = res;
+        // console.log(res);
+        error => this.error = error;
+      }
+    );
+  }
+  getTypesList(): void {
+    this.typeServiceService.getTypes().subscribe(
+      (res:any) =>{
+        this.types = res;
         console.log(res);
         error => this.error = error;
       }
@@ -65,10 +84,18 @@ export class Workshop1Component implements OnInit {
     })
   }
 
-  cambiarStatus(workshop: Workshop){
-    this.workshopsService.updateStatus(workshop).subscribe(
+  cambiarStatus(registrol: RegistroLanding){
+    this.rlandingService.updateStatus(registrol).subscribe(
       resp =>{ console.log(resp);
-        Swal.fire('Actualizado', `actualizado correctamente`, 'success');
+        Swal.fire('Actualizado', `actualizado status`, 'success');
+        this.getWorkshops();
+      }
+    )
+  }
+  onUpdate(registrol: RegistroLanding){
+    this.rlandingService.updateType(registrol).subscribe(
+      resp =>{ console.log(resp);
+        Swal.fire('Actualizado', `actualizado type`, 'success');
         this.getWorkshops();
       }
     )
@@ -76,7 +103,7 @@ export class Workshop1Component implements OnInit {
 
   search() {// funciona, devuelve la busqueda
 
-    return this.workshopsService.search(this.query).subscribe(
+    return this.rlandingService.search(this.query).subscribe(
       res=>{
         this.doctores = res;
         if(!this.query){

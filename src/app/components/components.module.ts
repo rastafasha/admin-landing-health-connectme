@@ -9,7 +9,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { DolarTodayComponent } from './dolar-today/dolar-today.component';
+// import { DolarTodayComponent } from './dolar-today/dolar-today.component';
 import { PagosRecientesComponent } from './pagos-recientes/pagos-recientes.component';
 import { UsuariosRecientesComponent } from './usuarios-recientes/usuarios-recientes.component';
 // import { CartComponent } from './cart/cart.component';
@@ -25,7 +25,7 @@ import { EditoresComponent } from './editores/editores.component';
 import { ModalCondicionesComponent } from './modal-condiciones/modal-condiciones.component';
 @NgModule({
   declarations: [
-    DolarTodayComponent,
+    // DolarTodayComponent,
     PagosRecientesComponent,
     UsuariosRecientesComponent,
     // CartComponent,
@@ -38,7 +38,7 @@ import { ModalCondicionesComponent } from './modal-condiciones/modal-condiciones
     ModalCondicionesComponent,
   ],
   exports: [
-    DolarTodayComponent,
+    // DolarTodayComponent,
     PagosRecientesComponent,
     UsuariosRecientesComponent,
     // CartComponent,

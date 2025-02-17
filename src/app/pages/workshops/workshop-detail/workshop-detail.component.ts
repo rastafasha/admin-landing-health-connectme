@@ -4,6 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Workshop } from 'src/app/models/workshop';
 import { WorkshopService } from 'src/app/services/workshop.service';
+import { RegistroLandingService } from 'src/app/services/registro-landing.service';
+import { RegistroLanding } from 'src/app/models/registro-langing';
+import { TypeService } from 'src/app/services/type-service.service';
+import { Type } from 'src/app/models/type';
 
 @Component({
   selector: 'app-workshop-detail',
@@ -13,27 +17,37 @@ import { WorkshopService } from 'src/app/services/workshop.service';
 export class WorkshopDetailComponent implements OnInit {
 
   title = "Detalle Registro";
-  workshop: Workshop;
+  rlanding: RegistroLanding;
+  type: Type;
   error: string;
 
   constructor(
     private location: Location,
     private activatedRoute: ActivatedRoute,
-    private workshopService: WorkshopService,
+    private typeService: TypeService,
+    private registroLandingService: RegistroLandingService,
     private http: HttpClient
   ) { }
 
   ngOnInit(): void {
     window.scrollTo(0,0);
     this.activatedRoute.params.subscribe( ({id}) => this.getPagoById(id));
+    
   }
   
   getPagoById(id:number){
-    this.workshopService.getWorkshop(id).subscribe(
+    this.registroLandingService.getRegistroLanding(id).subscribe(
       res=>{
-        this.workshop = res;
+        this.rlanding = res;
+        this.getConfig();
       }
     )
+  }
+
+  getConfig(){
+    this.typeService.getType(this.rlanding.type_id).subscribe((resp:any)=>{
+      this.type = resp.name
+    })
   }
 
   goBack() {

@@ -25,22 +25,26 @@
 
             <div class="card pagodetail">
                 <div class="col-xs-12 col-sm-6 col-md-6">
-                    <p><b>Nombre:</b> {{workshop.nombre}}</p>
-                    <p><b>Apellido:</b> {{workshop.apellido}}</p>
-                    <p><b>email de la cuenta:</b> {{workshop.email}}</p>
-                    <p><b>Especialidad:</b> {{workshop.speciality}}</p>
-                    <p><b>phone:</b> {{workshop.phone}}</p>
-                    <p><b>Fecha | Hora creado:</b> {{workshop.created_at | date:'MMM d, y, h:mm:ss a'}}</p>
-                    <p><b>Status:</b>
-                        <span class="badge bg-success" *ngIf="workshop.status === 'APPROVED'">Aprobado</span>
-                        <span class="badge bg-primary" *ngIf="workshop.status === 'PENDING'">Pendiente</span>
-                        <span class="badge bg-danger" *ngIf="workshop.status === 'REJECTED'">Rechazado</span>
-                    </p>
+                    <p><b>Nombre: </b> {{rlanding?.nombre}}</p>
+                    <p><b>Apellido: </b> {{rlanding?.apellido}}</p>
+                    <p><b>email de la cuenta: </b> {{rlanding?.email}}</p>
+                    <p><b>phone: </b> {{rlanding?.phone}}</p>
+                    <p><b>Se entero en: </b> {{rlanding?.dondeSeEntero}}</p>
+                    <p><b>facebook: </b> {{rlanding?.facebook}}</p>
+                    <p><b>instagram: </b> {{rlanding?.instagram}}</p>
+                    <p><b>Fecha Creado: </b> {{rlanding?.created_at | date:'MMM d, y'}}</p>
+                    <p><b>Hora Creado: </b> {{rlanding?.created_at | date:'h:mm:ss a'}}</p>
+                    
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6">
-                    <p><b>Se entero en:</b> {{workshop.dondeSeEntero}}</p>
-                    <p><b>facebook:</b> {{workshop.facebook}}</p>
-                    <p><b>instagram:</b> {{workshop.instagram}}</p>
+                    <p><b>Especialidad: </b> {{rlanding?.speciality}}</p>
+                    
+                    <p><b>Type:</b> {{type}}</p>
+                    <p><b>Status: </b>
+                        <span class="badge bg-success" *ngIf="rlanding?.status === 'APPROVED'">Aprobado</span>
+                        <span class="badge bg-primary" *ngIf="rlanding?.status === 'PENDING'">Pendiente</span>
+                        <span class="badge bg-danger" *ngIf="rlanding?.status === 'REJECTED'">Rechazado</span>
+                    </p>
                 </div>
 
             </div>

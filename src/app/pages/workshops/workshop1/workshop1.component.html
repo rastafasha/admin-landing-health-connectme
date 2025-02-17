@@ -70,42 +70,46 @@
                                     <th>Apellido</th>
                                     <th>email</th>
                                     <th>Especialidad</th>
-                                    <th>Ciudad</th>
-                                    <th>Telefono</th>
                                     <th>creado</th>
                                     <th>status</th>
-                                    <th>accion</th>
+                                    <th>type</th>
+                                    <!-- <th>accion</th> -->
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let workshop of doctores |  paginate: { itemsPerPage: count, currentPage: p }">
+                                <tr *ngFor="let registrol of rlandings |  paginate: { itemsPerPage: count, currentPage: p }">
 
-                                    <td>{{workshop.id}}</td>
-                                    <td><a [routerLink]="['/dashboard/workshop/detail', workshop.id]">{{workshop.nombre}}</a></td>
-                                    <td>{{workshop.apellido}}</td>
-                                    <td>{{workshop.email | slice:0:5}}... </td>
-                                    <td>{{workshop.speciality}}</td>
-                                    <td>{{workshop.ciudad}}</td>
-                                    <td>{{workshop.phone}}</td>
-                                    <td>{{workshop.created_at | date:'MMM d, y, h:mm:ss a'}}</td>
+                                    <td>{{registrol.id}}</td>
+                                    <td><a [routerLink]="['/dashboard/workshop/detail', registrol.id]">{{registrol.nombre}}</a></td>
+                                    <td>{{registrol.apellido}}</td>
+                                    <td>{{registrol.email | slice:0:5}}... </td>
+                                    <td>{{registrol.speciality}}</td>
+                                    <td>{{registrol.created_at | date:'shortDate'}}</td>
                                     
                                     <td>
-                                        <select class="form-control" [(ngModel)]="workshop.status">
+                                        <select class="form-control" [(ngModel)]="registrol.status" (change)="cambiarStatus(registrol)">
                                             <option value="APPROVED">Aprobado</option>
                                             <option value="PENDING">Pendiente</option>
                                             <option value="REJECTED">Rechazado</option>
                                         </select>
                                     </td>
+                                    <td>
+                                        <select class="form-control" [(ngModel)]="registrol.type_id" placeholder="Select" (change)="onUpdate(registrol)" >
+                                            <option *ngFor="let data of types" [value]="data.id">
+                                            {{data.name}}
+                                            </option>
+                                        </select>
+                                    </td>
 
-                                    <td class="text-nowrap text-center">
+                                    <!-- <td class="text-nowrap text-center">
 
-                                        <a (click)="cambiarStatus(workshop)" class="cursor" data-toggle="tooltip" data-original-title="Edit">
+                                        <a  class="cursor" data-toggle="tooltip" data-original-title="Edit">
                                             <button class="btn btn-outline-success">
                                           <i class="bx bxs-check-circle text-success" style="font-size: 18px;"></i> Aceptar
                                         </button>
                                         </a>
 
-                                    </td>
+                                    </td> -->
 
                                 </tr>
                             </tbody>
