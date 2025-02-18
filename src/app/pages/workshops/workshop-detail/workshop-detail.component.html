@@ -27,22 +27,28 @@
                 <div class="col-xs-12 col-sm-6 col-md-6">
                     <p><b>Nombre: </b> {{rlanding?.nombre}}</p>
                     <p><b>Apellido: </b> {{rlanding?.apellido}}</p>
-                    <p><b>email de la cuenta: </b> {{rlanding?.email}}</p>
-                    <p><b>phone: </b> {{rlanding?.phone}}</p>
+                    <p><b>Email: </b> {{rlanding?.email}}</p>
+                    <p><b>Phone: </b> {{rlanding?.phone}}</p>
                     <p><b>Se entero en: </b> {{rlanding?.dondeSeEntero}}</p>
                     <p><b>facebook: </b> {{rlanding?.facebook}}</p>
                     <p><b>instagram: </b> {{rlanding?.instagram}}</p>
-                    <p><b>Fecha Creado: </b> {{rlanding?.created_at | date:'MMM d, y'}}</p>
-                    <p><b>Hora Creado: </b> {{rlanding?.created_at | date:'h:mm:ss a'}}</p>
+                    <p><b>otra rrss: </b> {{rlanding?.rrss}}</p>
                     
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6">
+                    <p><b>País: </b> {{pais}}</p>
+                    <p><b>Ciudad: </b> {{rlanding?.ciudad}}</p>
+                    <p><b>Fecha Creado: </b> {{rlanding?.created_at | date:'MMM d, y'}}</p>
+                    <p><b>Hora Creado: </b> {{rlanding?.created_at | date:'h:mm:ss a'}}</p>
                     <p><b>Especialidad: </b> {{rlanding?.speciality}}</p>
                     
                     <p><b>Type:</b> {{type}}</p>
                     <p><b>Status: </b>
                         <span class="badge bg-success" *ngIf="rlanding?.status === 'APPROVED'">Aprobado</span>
                         <span class="badge bg-primary" *ngIf="rlanding?.status === 'PENDING'">Pendiente</span>
+                        <span class="badge bg-primary" *ngIf="rlanding?.status === 'TESTING'">Testing App</span>
+                        <span class="badge bg-primary" *ngIf="rlanding?.status === 'FREETIME'">Free Time</span>
+                        <span class="badge bg-danger" *ngIf="rlanding?.status === 'REJECTED'">Rechazado</span>
                         <span class="badge bg-danger" *ngIf="rlanding?.status === 'REJECTED'">Rechazado</span>
                     </p>
                 </div>

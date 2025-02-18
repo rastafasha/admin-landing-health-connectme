@@ -70,7 +70,7 @@ export class Workshop1Component implements OnInit {
     this.typeServiceService.getTypes().subscribe(
       (res:any) =>{
         this.types = res;
-        console.log(res);
+        // console.log(res);
         error => this.error = error;
       }
     );

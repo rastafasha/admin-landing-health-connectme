@@ -11,7 +11,7 @@ const baseUrl = environment.apiUrl;
 })
 export class RegistroLandingService {
 
-  public registrol: RegistroLanding;
+  public rlanding: RegistroLanding;
     // public role: Role;
     error:string;
   

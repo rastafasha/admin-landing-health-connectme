@@ -8,6 +8,8 @@ import { User } from 'src/app/models/user';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import Swal from 'sweetalert2';
+import { TypeService } from 'src/app/services/type-service.service';
+import { Type } from 'src/app/models/type';
 
 
 @Component({
@@ -19,7 +21,7 @@ export class CategoryIndexComponent implements OnInit {
 
 
   title = "Categorias"
-  categories: Category;
+  types: Type;
   user: User;
   p: number = 1;
   count: number = 8;
@@ -30,7 +32,7 @@ export class CategoryIndexComponent implements OnInit {
   constructor(
     private location: Location,
     private http: HttpClient,
-    private categoryService: CategoryService,
+    private typeService: TypeService,
     handler: HttpBackend
   ) {
     this.http = new HttpClient(handler);
@@ -52,11 +54,11 @@ export class CategoryIndexComponent implements OnInit {
   }
 
   getCurrencies(): void {
-    this.categoryService.getCategories().subscribe(
+    this.typeService.getTypes().subscribe(
       res =>{
-        this.categories = res;
+        this.types = res;
         error => this.error = error
-        console.log(this.categories);
+        console.log(this.types);
       }
     );
   }
@@ -72,7 +74,7 @@ export class CategoryIndexComponent implements OnInit {
       confirmButtonText: 'Si, Borrar!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.categoryService.deleteCategory(id).subscribe(
+        this.typeService.deleteType(id).subscribe(
           response =>{
             this.getCurrencies();
           }

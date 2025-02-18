@@ -8,6 +8,8 @@ import { RegistroLandingService } from 'src/app/services/registro-landing.servic
 import { RegistroLanding } from 'src/app/models/registro-langing';
 import { TypeService } from 'src/app/services/type-service.service';
 import { Type } from 'src/app/models/type';
+import { PaisService } from 'src/app/services/pais.service';
+import { Pais } from 'src/app/models/pais';
 
 @Component({
   selector: 'app-workshop-detail',
@@ -19,12 +21,14 @@ export class WorkshopDetailComponent implements OnInit {
   title = "Detalle Registro";
   rlanding: RegistroLanding;
   type: Type;
+  pais: Pais;
   error: string;
 
   constructor(
     private location: Location,
     private activatedRoute: ActivatedRoute,
     private typeService: TypeService,
+    private paisService: PaisService,
     private registroLandingService: RegistroLandingService,
     private http: HttpClient
   ) { }
@@ -40,6 +44,7 @@ export class WorkshopDetailComponent implements OnInit {
       res=>{
         this.rlanding = res;
         this.getConfig();
+        this.getPais();
       }
     )
   }
@@ -47,6 +52,11 @@ export class WorkshopDetailComponent implements OnInit {
   getConfig(){
     this.typeService.getType(this.rlanding.type_id).subscribe((resp:any)=>{
       this.type = resp.name
+    })
+  }
+  getPais(){
+    this.paisService.getPais(this.rlanding.pais_id).subscribe((resp:any)=>{
+      this.pais = resp.pais.title;
     })
   }
 

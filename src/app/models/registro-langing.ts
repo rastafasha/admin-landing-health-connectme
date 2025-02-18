@@ -11,14 +11,19 @@ export class RegistroLanding {
   email: string = "";
   speciality?: string = "";
   ciudad?: string = "";
+  // pais?: string = "";
   phone?: string = "";
   facebook?: string = "";
   instagram?: string = "";
   dondeSeEntero?: string = "";
   type_id?: number;
+  pais_id?: number;
+  rrss?: string = "";
   address?: string = "";
   image: string = "";
-  status?: 'APPROVED' | 'PENDING' | 'REJECTED';
+  status?: 'APPROVED' 
+  | 'PENDING' | 'REJECTED'
+  | 'TESTING' | 'FREETIME';
   created_at?: any;
   updated_at?: any;
 

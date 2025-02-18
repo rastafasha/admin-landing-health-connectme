@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
 })
 export class WorkshopsComponent implements OnInit {
 
-  title = "Doctores";
+  title = "Registros";
   error: string;
 
   user: User;

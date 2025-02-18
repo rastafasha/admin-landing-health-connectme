@@ -70,6 +70,7 @@
                                     <th>Apellido</th>
                                     <th>email</th>
                                     <th>Especialidad</th>
+                                    <th>Pais</th>
                                     <th>creado</th>
                                     <th>status</th>
                                     <th>type</th>
@@ -84,6 +85,7 @@
                                     <td>{{registrol.apellido}}</td>
                                     <td>{{registrol.email | slice:0:5}}... </td>
                                     <td>{{registrol.speciality}}</td>
+                                    <td>{{registrol.pais_id}}</td>
                                     <td>{{registrol.created_at | date:'shortDate'}}</td>
                                     
                                     <td>
@@ -91,6 +93,8 @@
                                             <option value="APPROVED">Aprobado</option>
                                             <option value="PENDING">Pendiente</option>
                                             <option value="REJECTED">Rechazado</option>
+                                            <option value="TESTING">Testing APP</option>
+                                            <option value="FREETIME">Free Time</option>
                                         </select>
                                     </td>
                                     <td>

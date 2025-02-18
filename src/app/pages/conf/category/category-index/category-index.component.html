@@ -54,16 +54,23 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre</th>
+                                    <th>Status</th>
                                     <th>Creado</th>
                                     <th class="text-nowrap">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let category of categories ">
+                                <tr *ngFor="let category of types ">
 
                                     <td>{{category.id}}</td>
                                     <td>{{category.name}}</td>
-                                    <td>{{category.created_at | date:'MMM d, y, h:mm:ss a'}} </td>
+                                    <td>
+                                        <!-- {{category.state}} -->
+                                        <span class="badge bg-success" *ngIf="category?.state === 1">Active</span>
+                                        <span class="badge bg-danger" *ngIf="category?.state === 2">Inactive</span>
+
+                                    </td>
+                                    <td>{{category.created_at | date:'shortDate'}} </td>
 
                                     <td class="text-nowrap text-center">
 

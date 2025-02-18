@@ -10,8 +10,8 @@
         <tbody *ngFor="let rlanding of rlandings | slice: 0:5">
             <tr>
 
-                <th scope="row"><a [routerLink]="['/dashboard/user/', rlanding.id]">{{rlanding.nombre}}</a></th>
-                <th><a [routerLink]="['/dashboard/user/', rlanding.id]">{{rlanding.email}}</a></th>
+                <th scope="row"><a [routerLink]="['/dashboard/workshop/detail/', rlanding.id]">{{rlanding.nombre}}</a></th>
+                <th><a [routerLink]="['/dashboard/workshop/detail/', rlanding.id]">{{rlanding.email}}</a></th>
                 <td>
                     <!-- {{user.role}} -->
                     <!-- <span class="badge bg-dark-light" *ngIf="user.role === 'SUPERADMIN'">SuperAdmin</span>
@@ -27,7 +27,7 @@
         </tbody>
     </table>
     <div class="col-xs-12 col-sm-3">
-        <button class="btn btn-primary" routerLink="/dashboard/users">
+        <button class="btn btn-primary" routerLink="/dashboard/workshops1">
     Ver todos
   </button>
     </div>

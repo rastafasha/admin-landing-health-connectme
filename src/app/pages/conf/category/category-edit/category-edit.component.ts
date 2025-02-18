@@ -10,6 +10,8 @@ import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
+import { TypeService } from 'src/app/services/type-service.service';
+import { Type } from 'src/app/models/type';
 
 @Component({
   selector: 'app-category-edit',
@@ -21,9 +23,9 @@ export class CategoryEditComponent implements OnInit {
   title : string;
 
   public categoryForm: FormGroup;
-  public category: Category;
+  public type: Type;
+  public types: Type;
   public usuario: User;
-  categories: Category;
   error: string;
 
   idcategory:any;
@@ -36,7 +38,7 @@ export class CategoryEditComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private location: Location,
-    private categoryService: CategoryService,
+    private typeService: TypeService,
   ) {
     this.usuario = usuarioService.user;
     const base_url = environment.apiUrl;
@@ -60,17 +62,19 @@ export class CategoryEditComponent implements OnInit {
   validarFormulario(){
     this.categoryForm = this.fb.group({
       name: ['',Validators.required],
+      state: ['', Validators.required],
     })
   }
 
   cargarCategory(id: number){
     if (id !== null && id !== undefined) {
       this.title = 'Editando Categoría';
-      this.categoryService.getCategory(id).subscribe(
+      this.typeService.getType(id).subscribe(
         res => {
           this.categoryForm.patchValue({
             id: res.id,
             name: res.name,
+            state: res.state,
           });
           this.categorySeleccionado = res;
           console.log(this.categorySeleccionado);
@@ -84,15 +88,15 @@ export class CategoryEditComponent implements OnInit {
 
   updateCategory(){
 
-    const {name } = this.categoryForm.value;
+    const {name, state } = this.categoryForm.value;
 
-    if(this.categorySeleccionado){debugger
+    if(this.categorySeleccionado){
       //actualizar
       const data = {
         ...this.categoryForm.value,
         id: this.categorySeleccionado.id
       }
-      this.categoryService.updateCategory(data).subscribe(
+      this.typeService.updateType(data).subscribe(
         resp =>{
           Swal.fire('Actualizado', `${name}  actualizado correctamente`, 'success');
           this.router.navigateByUrl(`/dashboard/categories`);
@@ -101,7 +105,7 @@ export class CategoryEditComponent implements OnInit {
 
     }else{
       //crear
-      this.categoryService.createCategory(this.categoryForm.value)
+      this.typeService.createType(this.categoryForm.value)
       .subscribe( (resp: any) =>{
         Swal.fire('Creado', `${name} creado correctamente`, 'success');
         this.router.navigateByUrl(`/dashboard/categories`);

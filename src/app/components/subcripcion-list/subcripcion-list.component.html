@@ -1,0 +1,25 @@
+<div class="card-body">
+
+    <table class="table table-borderless table-responsive">
+        <thead>
+            <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Creado</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let subc of subcripcions | slice: 0:5">
+            <tr>
+
+                <th>{{subc.email}}</th>
+                <th>{{subc.created_at | date: "shortDate"}}</th>
+                
+            </tr>
+
+        </tbody>
+    </table>
+    <!-- <div class="col-xs-12 col-sm-3">
+        <button class="btn btn-primary" routerLink="/dashboard/users">
+    Ver todos
+  </button>
+    </div> -->
+</div>

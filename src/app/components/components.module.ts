@@ -10,45 +10,48 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 
 // import { DolarTodayComponent } from './dolar-today/dolar-today.component';
-import { PagosRecientesComponent } from './pagos-recientes/pagos-recientes.component';
+// import { PagosRecientesComponent } from './pagos-recientes/pagos-recientes.component';
 import { UsuariosRecientesComponent } from './usuarios-recientes/usuarios-recientes.component';
 // import { CartComponent } from './cart/cart.component';
-// import { CartItemComponent } from './cart-item/cart-item.component';
-import { ReciboFacturaComponent } from './recibo-factura/recibo-factura.component';
-import { PlanesyproductosComponent } from './planesyproductos/planesyproductos.component';
-import { ProductItemComponent } from './product-item/product-item.component';
+// // import { CartItemComponent } from './cart-item/cart-item.component';
+// import { ReciboFacturaComponent } from './recibo-factura/recibo-factura.component';
+// import { PlanesyproductosComponent } from './planesyproductos/planesyproductos.component';
+// import { ProductItemComponent } from './product-item/product-item.component';
 import {PipesModule} from '../pipes/pipes.module';
 import {ModalComponent} from './modal/modal.component';
 import { EditoresComponent } from './editores/editores.component';
 // import { ChartComponent } from './chart/chart.component';
 // import { NgChartsModule } from 'ng2-charts';
 import { ModalCondicionesComponent } from './modal-condiciones/modal-condiciones.component';
+import { SubcripcionListComponent } from './subcripcion-list/subcripcion-list.component';
 @NgModule({
   declarations: [
     // DolarTodayComponent,
-    PagosRecientesComponent,
-    UsuariosRecientesComponent,
+    // PagosRecientesComponent,
     // CartComponent,
     // CartItemComponent,
-    ReciboFacturaComponent,
-    PlanesyproductosComponent,
-    ProductItemComponent,
+    // ReciboFacturaComponent,
+    // PlanesyproductosComponent,
+    // ProductItemComponent,
+    UsuariosRecientesComponent,
     ModalComponent,
     EditoresComponent,
     ModalCondicionesComponent,
+    SubcripcionListComponent,
   ],
   exports: [
     // DolarTodayComponent,
-    PagosRecientesComponent,
-    UsuariosRecientesComponent,
     // CartComponent,
     // CartItemComponent,
-    ReciboFacturaComponent,
-    PlanesyproductosComponent,
-    ProductItemComponent,
-    ModalComponent,
+    // PagosRecientesComponent,
+    // ReciboFacturaComponent,
+    // PlanesyproductosComponent,
+    // ProductItemComponent,
     EditoresComponent,
+    UsuariosRecientesComponent,
+    ModalComponent,
     ModalCondicionesComponent,
+    SubcripcionListComponent,
   ],
   imports: [
     CommonModule,
