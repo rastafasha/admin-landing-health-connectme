@@ -74,7 +74,7 @@
                                     <th>creado</th>
                                     <th>status</th>
                                     <th>type</th>
-                                    <!-- <th>accion</th> -->
+                                    <th>accion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -105,15 +105,18 @@
                                         </select>
                                     </td>
 
-                                    <!-- <td class="text-nowrap text-center">
+                                    <td class="text-nowrap text-center">
 
-                                        <a  class="cursor" data-toggle="tooltip" data-original-title="Edit">
-                                            <button class="btn btn-outline-success">
-                                          <i class="bx bxs-check-circle text-success" style="font-size: 18px;"></i> Aceptar
+                                        <button type="button" class="btn btn-outline-success" (click)="enviarInvitacion(registrol)">
+                                      <i class="bx bxs-check-circle text-success" style="font-size: 18px;"></i> Invitar
+                                    </button>
+                                        <!-- <a  class="cursor" data-toggle="tooltip" data-original-title="Edit">
+                                            <button class="btn btn-outline-success" (click)="enviarInvitacion(data.id)">
+                                          <i class="bx bxs-check-circle text-success" style="font-size: 18px;"></i> Invitar
                                         </button>
-                                        </a>
+                                        </a> -->
 
-                                    </td> -->
+                                    </td>
 
                                 </tr>
                             </tbody>

@@ -89,6 +89,11 @@ export class RegistroLandingService {
       const url = `${baseUrl}/registrol/update/type/${registrol.id}`;
       return this.http.put(url, registrol, this.headers);
     }
+
+    sendIvitation(registrol:RegistroLanding) {
+      const url = `${baseUrl}/registrol/sendinvitation/${registrol.id}`;
+      return this.http.put(url, registrol, this.headers);
+    }
   
   
   

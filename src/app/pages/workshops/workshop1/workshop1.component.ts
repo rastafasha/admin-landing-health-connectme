@@ -92,6 +92,14 @@ export class Workshop1Component implements OnInit {
       }
     )
   }
+  enviarInvitacion(registrol: RegistroLanding){
+    this.rlandingService.sendIvitation(registrol).subscribe(
+      resp =>{ console.log(resp);
+        // Swal.fire('Actualizado', `actualizado status`, 'success');
+        this.getWorkshops();
+      }
+    )
+  }
   onUpdate(registrol: RegistroLanding){
     this.rlandingService.updateType(registrol).subscribe(
       resp =>{ console.log(resp);
