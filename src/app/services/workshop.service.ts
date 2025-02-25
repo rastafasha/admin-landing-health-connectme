@@ -76,6 +76,7 @@ export class WorkshopService {
     const url = `${baseUrl}/doctor/update/status/${doctor.id}`;
     return this.http.put(url, doctor, this.headers);
   }
+  
 
 
 
