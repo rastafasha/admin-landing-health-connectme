@@ -1,9 +1,9 @@
 {
   "dir": "ltr",
-  "name": "Superadmin |Health Connect",
-  "short_name": "Superadmin |Health Connect",
+  "name": "Admin | Klyntic",
+  "short_name": "Admin | Klyntic",
   "theme_color": "#513081",
-  "description": "App to connect health clinics and patients.",
+  "description": "CRM para administrar clientes",
   "display": "standalone",
   "scope": "./",
   "start_url": "index.html",
